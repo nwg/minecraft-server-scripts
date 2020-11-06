@@ -12,7 +12,7 @@ StandardError=inherit
 Restart=always
 RestartSec=10
 WorkingDirectory=%h/minecraft
-ExecStart=%h/minecraft/run.sh
+ExecStart=%h/minecraft/minecraft-server-scripts/run.sh
 
 [Install]
 WantedBy=default.target
