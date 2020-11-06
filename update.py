@@ -34,7 +34,7 @@ def start_service(servicename):
 def is_service_running(servicename):
     try:
         subprocess.check_output(['/usr/bin/systemctl', '--user', 'status', servicename])
-    except CalledProcessError:
+    except subprocess.CalledProcessError:
         return False
     return True
 
@@ -105,19 +105,20 @@ for version in data['versions']:
                 stop_service(SYSTEMD_SERVICE)
                 time.sleep(5)
 
-            logging.info('Backing up world...')
+            if os.path.exists('../world'):
+                logging.info('Backing up world...')
 
-            if not os.path.exists(BACKUP_DIR):
-                os.makedirs(BACKUP_DIR)
+                if not os.path.exists(BACKUP_DIR):
+                    os.makedirs(BACKUP_DIR)
 
-            backupPath = os.path.join(
-                BACKUP_DIR,
-                "world" + "_backup_" + datetime.now().isoformat().replace(':', '-') + "_sha=" + cur_ver)
-            shutil.copytree("../world", backupPath)
+                backupPath = os.path.join(
+                    BACKUP_DIR,
+                    "world" + "_backup_" + datetime.now().isoformat().replace(':', '-') + "_sha=" + cur_ver)
+                shutil.copytree("../world", backupPath)
 
-            logging.info('Backed up world.')
+                logging.info('Backed up world.')
+
             logging.info('Updating server .jar')
-
             if os.path.exists(SERVER_JAR):
                 os.remove(SERVER_JAR)
 
