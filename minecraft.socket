@@ -1,0 +1,10 @@
+[Unit]
+Description=Minecraft socket
+PartOf=minecraft.service
+
+[Socket]
+ListenFIFO=%V/minecraft-server/minecraft-%u-stdin.socket
+FileDescriptorName=
+
+[Install]
+WantedBy=sockets.target
