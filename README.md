@@ -2,7 +2,7 @@ Scripts and systemd service files for a minecraft server
 
 * `mkdir -p $HOME/minecraft`
 * `cd $HOME/minecraft`
-* `git clone https://github.com/nwg/minecraft-server-scripts`
+* `git clone git@github.com:nwg/minecraft-server-scripts.git`
 * `cp minecraft-server-scripts/minecraft.{service,socket} ~/.config/systemd/user`
 * `systemctl --user enable minecraft.service`
 * `crontab -e`
