@@ -12,7 +12,7 @@ import subprocess
 import sys
 
 # CONFIGURATION
-UPDATE_TO_SNAPSHOT = True
+UPDATE_TO_SNAPSHOT = False
 MANIFEST_URL = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 BACKUP_DIR = 'world_backups'
 LOG_FILENAME = 'auto_updater.log'
